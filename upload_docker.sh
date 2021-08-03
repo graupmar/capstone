@@ -12,7 +12,7 @@ dockerpath=graupma/capstone
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login &&\
-    docker image tag capstone $dockerpath
+    docker image tag capstone:v2 $dockerpath
 
 # Step 3:
 # Push image to a docker repository
