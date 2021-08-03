@@ -20,10 +20,14 @@ jobs:
           name: install dependencies
           command: |
             sudo apt-get update && sudo apt-get install python3-venv
+            echo "###########1############"
             python3 -m venv venv
+            echo "####2###"
             . venv/bin/activate
+            pwd
+            echo "####3####"
             make install
-            wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.6.0/hadolint-Linux-x86_64 &&\
+            sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.6.0/hadolint-Linux-x86_64 &&\
             sudo chmod +x /bin/hadolint
 
 #      - save_cache:
