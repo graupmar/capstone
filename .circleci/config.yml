@@ -39,11 +39,8 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
 
-      - run:
-          name: build docker image
-          command: |
-            . venv/bin/activate
-            docker build --tag=capstone:latest .
+      - run: |
+          docker build --tag=capstone:latest .
 
       - run:
           name: upload docker image
