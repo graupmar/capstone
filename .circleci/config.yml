@@ -34,3 +34,19 @@ jobs:
           command: |
             . venv/bin/activate
             make lint
+      - run:
+          name: build docker image
+          command: |
+            . venv/bin/activate
+            docker build --tag=capstone:latest .
+
+      - run:
+          name: upload docker image
+          command: |
+            . venv/bin/activate
+            dockerpath=graupma/capstone
+            echo "Docker ID and Image: $dockerpath"
+            echo "$DOCKER_PW" | docker login -u $DOCKER_USERNAME --password-stdin
+            docker image tag capstone $dockerpath
+            docker image push $dockerpath
+
