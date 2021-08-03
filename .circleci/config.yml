@@ -19,6 +19,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            apt-get install python3-venv
             python3 -m venv venv
             . venv/bin/activate
             make install
@@ -36,8 +37,8 @@ jobs:
 #            . venv/bin/activate
 #            make lint
 
-      - setup_remote_docker:
-          version: 19.03.13
+#      - setup_remote_docker:
+#          version: 19.03.13
 
       - run: |
           docker build --tag=capstone:latest .
