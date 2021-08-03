@@ -3,6 +3,7 @@
 version: 2
 jobs:
   build:
+    machine: true
     docker:
       - image: python:3.7.3-stretch
 
@@ -24,11 +25,6 @@ jobs:
             make install
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.6.0/hadolint-Linux-x86_64 &&\
             chmod +x /bin/hadolint
-      - run:
-         name: install docker
-         command: |
-            apk add docker-cli
-            docker --version
 
       - save_cache:
           paths:
