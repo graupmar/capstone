@@ -50,9 +50,7 @@ jobs:
       - run:
           name: ansible activate new image
           command: |
-            apk add --update rsync
-            apk add --update openssh
-            apk add --update ansible # install the dependencies needed for your playbook
+            sudo apt-get install rsync openssh ansible
             export ANSIBLE_HOST_KEY_CHECKING=False
             echo "Wo bin ich?"
             ls -la
