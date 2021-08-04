@@ -1,13 +1,9 @@
 - name: "configuration play."
   hosts: ec2
   user: ec2-user
-  gather_facts: false
-  vars:
-    - ansible_python_interpreter: /usr/bin/python3
-    - ansible_host_key_checking: false
-    - ansible_stdout_callback: yaml
 
-- name: "copy project files to server"
-  copy:
-    src: /home/circleci/repo/run_kubernetes.sh
-    dest: /home/ec2-user
+tasks:
+  - name: "copy project files to server"
+    copy:
+      src: /home/circleci/repo/run_kubernetes.sh
+      dest: /home/ec2-user
