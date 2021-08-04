@@ -2,8 +2,8 @@
   hosts: ec2
   user: ec2-user
 
-tasks:
-  - name: "copy project files to server"
-    copy:
-      src: /home/circleci/repo/run_kubernetes.sh
-      dest: /home/ec2-user
+  tasks:
+    - name: "copy project files to server"
+      copy:
+        src: /home/circleci/repo/run_kubernetes.sh
+        dest: /home/ec2-user
