@@ -26,26 +26,26 @@ jobs:
             sudo chmod +x /bin/hadolint
             ls -la
 
-#      - run:
-#          name: run lint
-#          command: |
-#            . venv/bin/activate
-#            make lint
-#
-#      - setup_remote_docker:
-#          version: 19.03.13
-#
-#      - run: |
-#          docker build --tag=capstone:latest .
-#
-#      - run:
-#          name: upload docker image
-#          command: |
-#            dockerpath=graupma/capstone
-#            echo "Docker ID and Image: $dockerpath"
-#            echo "$DOCKER_PW" | docker login -u $DOCKER_USERNAME --password-stdin
-#            docker image tag capstone $dockerpath
-#            docker image push $dockerpath
+      - run:
+          name: run lint
+          command: |
+            . venv/bin/activate
+            make lint
+
+      - setup_remote_docker:
+          version: 19.03.13
+
+      - run: |
+          docker build --tag=capstone:latest .
+
+      - run:
+          name: upload docker image
+          command: |
+            dockerpath=graupma/capstone
+            echo "Docker ID and Image: $dockerpath"
+            echo "$DOCKER_PW" | docker login -u $DOCKER_USERNAME --password-stdin
+            docker image tag capstone $dockerpath
+            docker image push $dockerpath
 
       - run:
           name: ansible activate new image
