@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
 
-#      - restore_cache:
-#          keys:
-#            - v1-dependencies-{{ checksum "requirements.txt" }}
-#            - v1-dependencies-
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -29,17 +29,17 @@ jobs:
             make install
             sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.6.0/hadolint-Linux-x86_64 &&\
             sudo chmod +x /bin/hadolint
+            ls -la
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
-#      - save_cache:
-#          paths:
-#            - ./venv
-#          key: v1-dependencies-{{ checksum "requirements.txt" }}
-
-#      - run:
-#          name: run lint
-#          command: |
-#            . venv/bin/activate
-#            make lint
+      - run:
+          name: run lint
+          command: |
+            . venv/bin/activate
+            make lint
 
       - setup_remote_docker:
           version: 19.03.13
@@ -56,4 +56,13 @@ jobs:
             docker image tag capstone $dockerpath
             docker image push $dockerpath
 
-#hallo2222
+      - run:
+          name: ansible activate new image
+          command: |
+            apk add --update rsync
+            apk add --update openssh
+            apk add --update ansible # install the dependencies needed for your playbook
+            export ANSIBLE_HOST_KEY_CHECKING=False
+            echo "Wo bin ich?"
+            ls -la
+            ansible-playbook -i ~/project/.circleci/ansible/inventory.txt .circleci/ansible/playbook.yml
