@@ -54,4 +54,4 @@ jobs:
             export ANSIBLE_HOST_KEY_CHECKING=False
             echo "Wo bin ich?"
             ls -la
-            ansible-playbook -i ~/project/.circleci/ansible/inventory.txt .circleci/ansible/playbook.yml
+            ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/playbook.yml
