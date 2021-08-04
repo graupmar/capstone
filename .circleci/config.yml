@@ -50,7 +50,7 @@ jobs:
       - run:
           name: ansible activate new image
           command: |
-            sudo apt-get install rsync openssh ansible
+            sudo apt-get install rsync openssh-client ansible
             export ANSIBLE_HOST_KEY_CHECKING=False
             echo "Wo bin ich?"
             ls -la
