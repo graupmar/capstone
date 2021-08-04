@@ -7,7 +7,7 @@
     - ansible_host_key_checking: false
     - ansible_stdout_callback: yaml
 
-- name: "sync project files to server"
+- name: "copy project files to server"
   copy:
-    src: /root/project/
+    src: /home/circleci/repo/run_kubernetes.sh
     dest: /home/ec2-user
