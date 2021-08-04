@@ -8,6 +8,6 @@
         src: /home/circleci/repo/run_kubernetes.sh
         dest: /home/ec2-user
         mode: 0755
-  tasks:
+
     - name: "run file"
-    command: /home/ec2-user/run_kubernetes.sh
+      command: /home/ec2-user/run_kubernetes.sh
