@@ -53,5 +53,6 @@ jobs:
             sudo apt-get install rsync openssh-client ansible
             export ANSIBLE_HOST_KEY_CHECKING=False
             echo "Wo bin ich?"
+            pwd
             ls -la
             ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/playbook.yml
