@@ -50,7 +50,7 @@ jobs:
       - run:
           name: ansible activate new image
           command: |
-            sudo apt-get install ansible
+            #sudo apt-get install ansible
             export ANSIBLE_HOST_KEY_CHECKING=False
             echo "Wo bin ich?"
             pwd
