@@ -8,6 +8,6 @@
     - ansible_stdout_callback: yaml
 
 - name: "sync project files to server"
-  synchronize:
+  copy:
     src: /root/project/
     dest: /home/ec2-user
