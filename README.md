@@ -2,7 +2,13 @@ This is my capstone project.
 It is a blue/green deployment
 
 The EKS cluster was created with:
+
 eksctl create cluster -f eks-cluster.yml
+
+This is the best option to direclty create a working and stable running EKS cluster.
+YOu can modify different things in eks-cluster.yml.
+To make it easy I used here default settings.
+This cluster was created first direclty from a client machine because we do not want to delete and create it again in a pipeline.
 
 kubectl get pods -o wide
 NAME                      READY   STATUS    RESTARTS   AGE   IP               NODE                                              NOMINATED NODE   READINESS GATES
